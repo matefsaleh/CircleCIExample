@@ -2,23 +2,24 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6
+      - image: circleci/node:10.18.0
+
+    working_directory: ~/cortica-axon/
+
     steps:
       - checkout
+
+      # Download and cache dependencies
       - restore_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "./backend/package-lock.json" }}-{{ checksum "./frontend/package-lock.json" }}
-      - run:
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
+          keys:
+            - v1-dependencies-{{ checksum "./backend/package-lock.json" }}-{{ checksum "./frontend/package-lock.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: npm install
+
       - save_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "./backend/package-lock.json" }}-{{ checksum "./frontend/package-lock.json" }}
+          key: v1-dependencies-{{ checksum "./backend/package-lock.json" }}-{{ checksum "./frontend/package-lock.json" }}
           paths:
-            - "venv"
             - ./backend/node_modules
             - ./frontend/node_modules
-      - run: npm install
-      - store_artifacts:
-          path: test-reports/
-          destination: python_app
