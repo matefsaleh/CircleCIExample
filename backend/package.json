@@ -1,0 +1,44 @@
+{
+  "name": "poc_serverless-local-webpack-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serverless offline start -r eu-central-1 --noTimeout --port 3000 --host 0.0.0.0",
+    "deploy": "serverless deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.4",
+    "graphql-tag": "^2.10.0",
+    "serverless": "^1.35.1",
+    "serverless-offline": "^5.12.1",
+    "serverless-secrets-plugin": "^0.1.0",
+    "serverless-webpack": "^5.2.0",
+    "webpack": "^4.28.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "@aws-sdk/client-kms-node": "0.1.0-preview.2",
+    "@microsoft/microsoft-graph-client": "^2.0.0",
+    "apollo-server-lambda": "^2.3.1",
+    "array.prototype.flatmap": "^1.2.2",
+    "arraybuffer-to-string": "^1.0.2",
+    "aws-elasticsearch-client": "^2.0.0",
+    "aws-sdk": "2.555.0",
+    "axios": "^0.18.1",
+    "elasticsearch": "^16.4.0",
+    "graphql": "^14.1.1",
+    "graphql-import": "^0.7.1",
+    "graphql-iso-date": "^3.6.1",
+    "http-aws-es": "^6.0.0",
+    "merge-graphql-schemas": "^1.5.8",
+    "moment": "^2.23.0",
+    "uuid": "^3.3.3"
+  }
+}
