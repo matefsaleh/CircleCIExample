@@ -16,6 +16,8 @@ jobs:
           key: deps1-{{ .Branch }}-{{ checksum "./backend/package-lock.json" }}-{{ checksum "./frontend/package-lock.json" }}
           paths:
             - "venv"
+            - ./backend/node_modules
+            - ./frontend/node_modules
       - run:
           name: Running tests
           command: |
